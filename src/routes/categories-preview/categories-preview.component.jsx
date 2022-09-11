@@ -1,22 +1,21 @@
-import SHOP_DATA from '../../shop-data.js'
-import { useContext,Fragment} from 'react';
+import { useContext, Fragment } from 'react';
+
 import { CategoriesContext } from '../../contexts/categories.context';
-import CategoryPreview from '../../Components/category-preview/category-preview.component.jsx';
+import CategoryPreview from '../../components/category-preview/category-preview.component';
 
-const CategoriesPreview= () =>{
-    const {categoriesMap} =useContext(CategoriesContext)
-    return (
-        <Fragment>
-            {
-                Object.keys(categoriesMap).map(title => {
-                  const products=categoriesMap[title];
+const CategoriesPreview = () => {
+  const { categoriesMap } = useContext(CategoriesContext);
 
-                  return<CategoryPreview key={title} title={title} products={products} />
+  return (
+    <Fragment>
+      {Object.keys(categoriesMap).map((title) => {
+        const products = categoriesMap[title];
+        return (
+          <CategoryPreview key={title} title={title} products={products} />
+        );
+      })}
+    </Fragment>
+  );
+};
 
-                })
-            }
-        
-        </Fragment>
-    )
-}
 export default CategoriesPreview;
